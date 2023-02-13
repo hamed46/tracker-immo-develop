@@ -1,0 +1,79 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.1'
+	id 'io.spring.dependency-management' version '1.1.0'
+	id 'org.asciidoctor.convert' version '1.5.8'
+}
+
+group = 'com.trackerimmo'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('snippetsDir', file("build/generated-snippets"))
+	
+}
+
+dependencies {
+	//implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'	
+	implementation 'com.vladmihalcea:hibernate-types-55:2.14.0'
+	implementation 'io.hypersistence:hypersistence-utils-hibernate-60:3.0.1'
+	implementation 'org.projectlombok:lombok'
+	implementation 'org.postgresql:postgresql'
+	implementation 'org.modelmapper:modelmapper:3.1.1'
+	implementation 'org.apache.kafka:kafka-streams'
+	implementation 'org.springframework.kafka:spring-kafka'
+	implementation 'org.apache.opennlp:opennlp-tools:2.1.0'
+	implementation 'org.apache.opennlp:opennlp-dl:2.1.0'
+	implementation 'com.meilisearch.sdk:meilisearch-java:0.8.0'
+	implementation 'com.github.ua-parser:uap-java:1.5.3'
+	implementation 'javax.json:javax.json-api:1.1.4'
+	implementation 'org.apache.commons:commons-text:1.10.0'
+	implementation 'io.milvus:milvus-sdk-java:2.2.1'
+	// implementation 'org.deeplearning4j:deeplearning4j-core:1.0.0-M2.1'
+	// implementation 'org.nd4j:nd4j-cuda-11.6-platform:1.0.0-M2.1'
+	// implementation 'org.nd4j:nd4j-native-platform:1.0.0-M2.1'
+	// implementation 'org.nd4j:nd4j-x86:0.4-rc3.8'
+	// implementation 'org.nd4j:nd4j-native:1.0.0-M2.1:linux-x86_64-compat'
+	//implementation 'ai.djl.spring:djl-spring-boot-starter-mxnet-linux-x86_64:0.20'
+	//implementation 'ai.djl.spring:djl-spring-boot-starter-mxnet-auto:0.20'
+	//implementation 'ai.djl.spring:djl-spring-boot-starter-pytorch-auto:0.20'
+	//implementation 'ai.djl.spring:djl-spring-boot-starter-autoconfigure:0.20'
+	implementation 'ai.djl:model-zoo:0.20.0'
+	implementation 'ai.djl:api:0.20.0'
+	implementation platform("ai.djl:bom:0.20.0")
+    implementation "ai.djl:api"
+    runtimeOnly "ai.djl.pytorch:pytorch-engine"
+    runtimeOnly "ai.djl.pytorch:pytorch-model-zoo"
+    implementation 'org.deeplearning4j:deeplearning4j-core:1.0.0-M2.1'
+    implementation 'org.datavec:datavec-api:1.0.0-M2.1'
+    implementation 'org.datavec:datavec-data-image:1.0.0-M2.1'
+    implementation 'org.slf4j:slf4j-api:2.0.6'
+    implementation 'org.nd4j:nd4j-native-platform:1.0.0-M2.1'
+    implementation 'org.openpnp:opencv:4.6.0-0'
+    implementation 'org.deeplearning4j:deeplearning4j-zoo:1.0.0-M2.1'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.kafka:spring-kafka-test'
+	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+tasks.named('test') {
+	outputs.dir snippetsDir
+	useJUnitPlatform()
+}
+
+tasks.named('asciidoctor') {
+	inputs.dir snippetsDir
+	dependsOn test
+}

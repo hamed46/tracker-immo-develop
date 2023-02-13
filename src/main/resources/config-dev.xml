@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!DOCTYPE properties SYSTEM 'http://java.sun.com/dtd/properties.dtd'>
+
+<properties>
+
+	<!-- DO NOT MODIFY THIS FILE. Use tracker.xml instead. -->
+
+	<entry key='web.port'>8080</entry>
+	<entry key='web.path'>./web</entry>
+	<entry key='web.address'>localhost</entry>
+	<!--entry key='web.address'>next.atseeone.com</entry -->
+	<!--entry key='web.address'>next.atseeone.com</entry -->
+	<entry key='web.url'>http://localhost</entry>
+	<entry key='templates.rootPath'>/home/salah/workspace/tracker/bin/main/templates/</entry>
+	<entry key='web.persistSession'>false</entry>
+	<entry key='geocoder.enable'>false</entry>
+	<entry key='geocoder.type'>nominatim</entry>
+	<entry key='geocoder.url_france'>https://nominatim-france.odacel.com</entry>
+	<entry key='geocoder.url_tunisia'>https://nominatim-tunisia.odacel.com</entry>
+	<entry key='geocoder.format'>%h %r, %t, %s</entry>
+	<entry key='geocoder.cacheSize'>10000000</entry>
+	<entry key='geocoder.onRequest'>true</entry>
+	<entry key='geocoder.reuseDistance'>50</entry>
+	<entry key='default.region'>europe_france</entry>
+	
+	
+	<!-- meilisearch params --> 
+	<entry key='meiliSearch.url'>http://54.36.191.72:7701/</entry>
+	<entry key='meilisearch.token'>rVU82VxxD8pTprE8</entry>
+	
+	
+	
+
+</properties>
